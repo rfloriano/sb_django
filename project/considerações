@@ -1,0 +1,19 @@
+Clientes
+    São necessários esses dois e-mails?
+        email   varchar(255)
+        representante_email     varchar(255)
+
+    Não será necessário porque será subdividido em duas classes diferentes
+        type
+
+    Pra que são usados?
+        activation_code     varchar(255)
+        activated_at    datetime
+        tipo_questionario   varchar(255)
+        descricao   text
+        observacoes     text
+        segmento    int(11)
+        url     varchar(255)
+        nivel   int(11)
+        numero  int(11)
+        tipo_retorno_por_cep    int(11)
