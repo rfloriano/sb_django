@@ -1,4 +1,4 @@
-Clientes
+Clientes:
     São necessários esses dois e-mails?
         email   varchar(255)
         representante_email     varchar(255)
@@ -7,8 +7,6 @@ Clientes
         type
 
     Pra que são usados?
-        activation_code     varchar(255)
-        activated_at    datetime
         tipo_questionario   varchar(255)
         descricao   text
         observacoes     text
@@ -17,3 +15,28 @@ Clientes
         nivel   int(11)
         numero  int(11)
         tipo_retorno_por_cep    int(11)
+
+Dispositivos:
+    Ainda é necessário?
+        envia_email_vulnerabilidade tinyint(1) - Agora temos o user_profile, faz mais sentido o usuário permitir um e-mail ser enviado do que o dispositivo
+        primeira_certificacao   tinyint(1) - Não é utilizado
+        ultima_certificacao     datetime - Isso não é o mesmo que o último scan sem vulnerabilidades de nível 3, 4 ou 5?
+        
+    Com a mudança dos selos multi-idiomas isso é necessário?
+        selo_id tinyint(11)
+        idioma_selo     varchar(255)
+
+    Não será necessário porque será subdividido em duas classes diferentes
+        type
+
+    Não são a mesma coisa?
+        aceite  tinyint(1)
+        termo_de_uso    tinyint(1)
+        aceite_cadastro     tinyint(1)
+
+Dispovisitivos Malware:
+    Não será necessário porque será subdividido em duas classes diferentes
+        type
+    
+    Existe mais de um selo de malware?
+        selo_id     int(11)    
