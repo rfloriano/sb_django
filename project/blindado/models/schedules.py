@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from devices import Device
 
 DAYS_OF_WEEK = (
     (0, 'Domingo'),
@@ -13,9 +14,9 @@ DAYS_OF_WEEK = (
 )
 
 FREQUENCIA = [
-    ("IMEDIATAMENTE" "IMEDIATAMENTE"),
-    ("DIARIAMENTE" "DIARIAMENTE"),
-    ("SEMANALMENTE" "SEMANALMENTE"),
+    ("IMEDIATAMENTE", "IMEDIATAMENTE"),
+    ("DIARIAMENTE", "DIARIAMENTE"),
+    ("SEMANALMENTE", "SEMANALMENTE"),
     ("MENSALMENTE", "MENSALMENTE"),
 ]
 
@@ -28,28 +29,20 @@ class Schedule(models.Model):  # Agendamentos
     active = models.BooleanField()  # ativo
     weekly_scan_day = models.PositiveIntegerField(choices=DAYS_OF_WEEK, null=True, blank=True)  # dia_scan_semanal
     monthly_scan_day = models.PositiveIntegerField(null=True, blank=True)  # dia_scan_mensal
-    recorrente = models.IntegerField(null=True, blank=True)
-    usuario_id = models.IntegerField(null=True, blank=True)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    recurrent = models.BooleanField()  # recorrente
+    created_by = models.IntegerField(null=True, blank=True)  # usuario_id
+    created_at = models.DateTimeField()  # created_at
+    updated_at = models.DateTimeField()  # updated_at
 
     class Meta:
         app_label = 'blindado'
 
-    # descricao = models.CharField(max_length=300, blank=True)
-    # url = models.CharField(max_length=300, blank=True)
 
-    # status = models.CharField(max_length=90, blank=True)
-    # app_analysis = models.IntegerField(null=True, blank=True)
-    # data_conclusao = models.DateTimeField(null=True, blank=True)
-    # ultimo_scan_criado = models.DateTimeField(null=True, blank=True)
+class ArmoredSchedule(Schedule):
+    from scans import ScanType
 
-    # tipo = models.CharField(max_length=60, blank=True)
+    device = models.ForeignKey(Device)  # dispositivo_id
+    scan_type = models.ForeignKey(ScanType)  # tipo_scan_id
 
-    # client_id = models.CharField(max_length=45, blank=True)
-    # provedor_utilizado = models.CharField(max_length=765, blank=True)
-
-    # dispositivo_id = models.IntegerField(null=True, blank=True)
-    # dispositivo_malware_id = models.IntegerField(null=True, blank=True)
-
-    tipo_scan_id = models.IntegerField(null=True, blank=True)
+    class Meta:
+        app_label = 'blindado'

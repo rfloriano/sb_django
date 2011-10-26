@@ -39,4 +39,38 @@ Dispovisitivos Malware:
         type
     
     Existe mais de um selo de malware?
-        selo_id     int(11)    
+        selo_id     int(11)
+
+Agendamentos:
+    É necessário?
+        data_criacao  datetime - Dos ~13.600 agendamentos que existe, ~13.250 têm este campo igual ao campo created_at
+        descricao   varchar(100) - os agendamentos que contém este dado, trazem o mesmo que o dado do dispositivo
+    
+    Não será necessário porque pode ser encontrado pela referência do dispositivo
+        tipo    varchar(20)
+        client_id   varchar(15)
+        provedor_utilizado  varchar(255)
+        url     varchar(100)
+    
+    Não será necessário porque pode ser encontrado pela referência do último scan
+        status  varchar(30)
+        data_conclusao = models.DateTimeField(null=True, blank=True)
+        ultimo_scan_criado = models.DateTimeField(null=True, blank=True)
+
+    Para que serve?
+        app_analysis    tinyint(1)
+
+Scans:
+    É necessário?
+        descricao   varchar(100) - os agendamentos que contém este dado trazem o mesmo que o nome do dispositivo
+        data_criacao  datetime - Têm este campo igual ao campo created_at
+
+    Para que serve?
+        app_analysis    tinyint(1)
+        
+Relatorios:
+    É necessário?
+        duracao     int(11) - Porque esse dado não pode ser a diferença do scan_finished_date com o scan_date do scan que ele referencia?
+        data_criacao    datetime - Este campo é igual ao created_at
+        os  varchar(255) - Todos os campos na base estão nulos, qual é o intúito deste campo
+        

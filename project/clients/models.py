@@ -20,34 +20,34 @@ from django.db import models
 #     class Meta:
 #         db_table = u'adquirentes'
 
-class Agendamentos(models.Model):
-    id = models.IntegerField(primary_key=True)
-    descricao = models.CharField(max_length=300, blank=True)
-    url = models.CharField(max_length=300, blank=True)
-    tipo = models.CharField(max_length=60, blank=True)
-    frequencia = models.CharField(max_length=60, blank=True)
-    inicio_do_agendamento = models.DateTimeField(null=True, blank=True)
-    fim_do_agendamento = models.DateTimeField(null=True, blank=True)
-    hora_do_scan = models.TextField(blank=True) # This field type is a guess.
-    ativo = models.IntegerField(null=True, blank=True)
-    data_criacao = models.DateTimeField(null=True, blank=True)
-    usuario_id = models.IntegerField(null=True, blank=True)
-    client_id = models.CharField(max_length=45, blank=True)
-    dispositivo_id = models.IntegerField(null=True, blank=True)
-    status = models.CharField(max_length=90, blank=True)
-    app_analysis = models.IntegerField(null=True, blank=True)
-    tipo_scan_id = models.IntegerField(null=True, blank=True)
-    data_conclusao = models.DateTimeField(null=True, blank=True)
-    created_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
-    provedor_utilizado = models.CharField(max_length=765, blank=True)
-    dispositivo_malware_id = models.IntegerField(null=True, blank=True)
-    dia_scan_mensal = models.IntegerField(null=True, blank=True)
-    recorrente = models.IntegerField(null=True, blank=True)
-    dia_scan_semanal = models.IntegerField(null=True, blank=True)
-    ultimo_scan_criado = models.DateTimeField(null=True, blank=True)
-    class Meta:
-        db_table = u'agendamentos'
+# class Agendamentos(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     descricao = models.CharField(max_length=300, blank=True)
+#     url = models.CharField(max_length=300, blank=True)
+#     tipo = models.CharField(max_length=60, blank=True)
+#     frequencia = models.CharField(max_length=60, blank=True)
+#     inicio_do_agendamento = models.DateTimeField(null=True, blank=True)
+#     fim_do_agendamento = models.DateTimeField(null=True, blank=True)
+#     hora_do_scan = models.TextField(blank=True) # This field type is a guess.
+#     ativo = models.IntegerField(null=True, blank=True)
+#     data_criacao = models.DateTimeField(null=True, blank=True)
+#     usuario_id = models.IntegerField(null=True, blank=True)
+#     client_id = models.CharField(max_length=45, blank=True)
+#     dispositivo_id = models.IntegerField(null=True, blank=True)
+#     status = models.CharField(max_length=90, blank=True)
+#     app_analysis = models.IntegerField(null=True, blank=True)
+#     tipo_scan_id = models.IntegerField(null=True, blank=True)
+#     data_conclusao = models.DateTimeField(null=True, blank=True)
+#     created_at = models.DateTimeField(null=True, blank=True)
+#     updated_at = models.DateTimeField(null=True, blank=True)
+#     provedor_utilizado = models.CharField(max_length=765, blank=True)
+#     dispositivo_malware_id = models.IntegerField(null=True, blank=True)
+#     dia_scan_mensal = models.IntegerField(null=True, blank=True)
+#     recorrente = models.IntegerField(null=True, blank=True)
+#     dia_scan_semanal = models.IntegerField(null=True, blank=True)
+#     ultimo_scan_criado = models.DateTimeField(null=True, blank=True)
+#     class Meta:
+#         db_table = u'agendamentos'
 
 class Assinaturas(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -713,28 +713,28 @@ class ResultadoPesquisas(models.Model):
     class Meta:
         db_table = u'resultado_pesquisas'
 
-class Scans(models.Model):
-    id = models.IntegerField(primary_key=True)
-    descricao = models.CharField(max_length=300, blank=True)
-    data_do_scan = models.DateTimeField(null=True, blank=True)
-    concluido = models.IntegerField(null=True, blank=True)
-    data_criacao = models.DateTimeField(null=True, blank=True)
-    agendamento_id = models.IntegerField(null=True, blank=True)
-    request_id = models.CharField(unique=True, max_length=45, blank=True)
-    status = models.CharField(max_length=90, blank=True)
-    app_analysis = models.IntegerField(null=True, blank=True)
-    data_conclusao = models.DateTimeField(null=True, blank=True)
-    relatorio_cenzic_id = models.IntegerField(null=True, blank=True)
-    percentual = models.IntegerField(null=True, blank=True)
-    created_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
-    hackalert_id = models.IntegerField(null=True, blank=True)
-    scan_avds_id = models.CharField(max_length=765, blank=True)
-    webscan_avds_id = models.CharField(max_length=765, blank=True)
-    error_description = models.CharField(max_length=765, blank=True)
-    numero_tentativas = models.IntegerField(null=True, blank=True)
-    class Meta:
-        db_table = u'scans'
+# class Scans(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     descricao = models.CharField(max_length=300, blank=True)
+#     data_do_scan = models.DateTimeField(null=True, blank=True)
+#     concluido = models.IntegerField(null=True, blank=True)
+#     data_criacao = models.DateTimeField(null=True, blank=True)
+#     agendamento_id = models.IntegerField(null=True, blank=True)
+#     request_id = models.CharField(unique=True, max_length=45, blank=True)
+#     status = models.CharField(max_length=90, blank=True)
+#     app_analysis = models.IntegerField(null=True, blank=True)
+#     data_conclusao = models.DateTimeField(null=True, blank=True)
+#     relatorio_cenzic_id = models.IntegerField(null=True, blank=True)
+#     percentual = models.IntegerField(null=True, blank=True)
+#     created_at = models.DateTimeField(null=True, blank=True)
+#     updated_at = models.DateTimeField(null=True, blank=True)
+#     hackalert_id = models.IntegerField(null=True, blank=True)
+#     scan_avds_id = models.CharField(max_length=765, blank=True)
+#     webscan_avds_id = models.CharField(max_length=765, blank=True)
+#     error_description = models.CharField(max_length=765, blank=True)
+#     numero_tentativas = models.IntegerField(null=True, blank=True)
+#     class Meta:
+#         db_table = u'scans'
 
 class SchemaMigrations(models.Model):
     version = models.CharField(unique=True, max_length=255)
