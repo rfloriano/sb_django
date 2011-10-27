@@ -68,9 +68,40 @@ Scans:
     Para que serve?
         app_analysis    tinyint(1)
         
-Relatorios:
+Relatorios Cenzic:
     É necessário?
         duracao     int(11) - Porque esse dado não pode ser a diferença do scan_finished_date com o scan_date do scan que ele referencia?
         data_criacao    datetime - Este campo é igual ao created_at
         os  varchar(255) - Todos os campos na base estão nulos, qual é o intúito deste campo
+        nameserver  varchar(255) - Qual é o intúito deste campo?
+
+Relatorios:
+    Rever necessidade desta tabela
+
+Contratos:
+    É necessário?
+        tipo    varchar(255) - Todos os registros dos contratos de malware hoje estão com este campo Null
+        sf_contrato_cod     int(11) - Todos os registros dos contratos de malware hoje estão com este campo Null, a idéia é usar isso futuramente para vincular ao sistema financeiro?
+
+Planos:
+    Blindagem
+        Não será necessário porque será subdividido classes diferentes
+            type = models.CharField(max_length=765, blank=True)
         
+        Pra que serve?
+            plano_site_blindado     bit(1) - Qual é o intúito deste campo?
+
+    Malware
+        Isso não deveria estar nas faixas de planos?
+            page_views_mensal   int(11) - 
+            nivel_alerta_page_views     int(11) - 
+
+        É necessário?
+            gratuito    tinyint(1) - Este campo não deveria ser uma função que trabalhasse com as faixas de planos e/ou com o trial?
+            num_urls    int(11) - Este campo não deveria ser um "número de domínios" dentro do faixas de planos?
+
+        Para que serve?
+            plano_site_blindado_flag    tinyint(1) - Qual é o intúito deste campo?
+
+        Dúvida:
+            sf_servico_cod  int(11) - Este campo é usado para o sistema financeiro certo?
