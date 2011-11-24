@@ -1,8 +1,5 @@
 # Django settings for project project.
 
-import os
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -20,7 +17,15 @@ DATABASES = {
         'PASSWORD': 'root',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+    },
+    'old': {
+        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'siteblindado_portal_dev',                      # Or path to database file if using sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
+        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -48,18 +53,18 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = ''
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
+STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -86,7 +91,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '09z@^n9!ds=qq-b)#5xu)+mfb*j+8m&5l3pm^ha4_9lp7x-klj'
+SECRET_KEY = '$5fbsad1dpuzlil#cgy25s&_6%i%q$j0s-=cw&k*mf7@ro20rx'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -106,7 +111,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,17 +127,11 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    # 'clients',
-    # 'blindado',
-    # 'malware',
-    # 'cliente',
-
+    'old',
     'core',
     'armored',
-    'malware',
-
-
-    'django_extensions',
+    'migration',
+    # 'malware',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -158,3 +156,5 @@ LOGGING = {
         },
     }
 }
+
+DATABASE_ROUTERS = ['project.routers.Router']
